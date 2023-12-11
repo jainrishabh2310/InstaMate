@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:id="@+id/logo"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:fontFamily="@font/helvetica"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#e2e2e2"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/post_select"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:src="@drawable/add"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/message"/>
+        <TextView
+            android:id="@+id/story_current_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Posts"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/helvetica"
+            android:textSize="14sp"
+            android:textColor="#000"
+            />
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#e2e2e2"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/reel_select"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="7dp">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+
+            android:src="@drawable/reel_us"
+            android:layout_alignParentEnd="true"
+         />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reels"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/helvetica"
+            android:textSize="14sp"
+            android:textColor="#000"
+            />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#e2e2e2"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+    <androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:id="@+id/story_select"
+    android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:src="@drawable/add_s"
+            android:layout_alignParentEnd="true"
+           />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Story"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/helvetica"
+            android:textSize="14sp"
+            android:textColor="#000"
+            />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+</LinearLayout>

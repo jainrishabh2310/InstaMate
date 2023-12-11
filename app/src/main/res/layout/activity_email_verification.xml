@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".Email_Verification">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:gravity="center"
+            android:background="@drawable/logo_gradient"
+           >
+
+
+            <TextView
+                android:id="@+id/title"
+                android:paddingStart="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:transitionName="textview1"
+                android:textColor="#fff"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:text="Here's your first step with us!"
+                android:layout_weight="1"
+                android:textSize="30sp"
+                />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+
+
+                android:layout_gravity="end|center"
+                android:layout_height="100dp"
+                android:layout_marginTop="-5dp"
+                android:transitionName="image"
+                android:src="@drawable/ic_launcher_background"/>
+
+
+        </LinearLayout>
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="25dp"
+            android:padding="10dp"
+            app:cardElevation="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginBottom="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#f2f2f2"
+
+                tools:ignore="ExtraText">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Email"
+                    app:hintTextColor="#000"
+                    app:boxBackgroundColor="#fff"
+                 >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/email"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Enter Password"
+                    android:transitionName="numotp"
+                    app:boxBackgroundColor="#fff"
+                    app:passwordToggleEnabled="true"
+
+                  >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:id="@+id/pass"
+
+                        android:textColor="#000"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Verify"
+                    android:textColor="#fff"
+                    android:transitionName="button"
+                    android:id="@+id/verify"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:background="@color/color_theme"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Your Profile"
+            android:fontFamily="@font/helveticabold"
+            android:textSize="24sp"
+            android:textColor="#000"
+            android:layout_weight="1"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="Update"
+            android:background="@drawable/gradient_back"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:shadowColor="@color/white"
+            android:textColor="#fff"
+            android:layout_margin="5dp"
+            android:elevation="20dp"
+            android:visibility="visible"
+            android:id="@+id/edit_profile_upload"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/view"
+        android:layout_below="@+id/comment_text"
+        android:background="#e2e2e2"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/edit_profile_pic"
+        android:layout_width="110dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_launcher_background"
+        app:civ_border_color="#000"
+        app:civ_border_width="3dp"
+        android:layout_gravity="center"
+      />
+    <TextView
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit your Profile Picture"
+        android:id="@+id/edit_profile_pic_btn"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="#00009c"
+        />
+
+    <TextView
+        android:paddingTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:fontFamily="@font/helvetica"
+        android:textSize="18sp"
+        android:layout_marginStart="5dp"
+
+        android:textColor="#000"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:textSize="20sp"
+        android:id="@+id/edit_profile_name"
+        android:visibility="visible"/>
+
+    <TextView
+        android:paddingTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date of birth"
+        android:textSize="18sp"
+        android:layout_marginStart="5dp"
+
+        android:textColor="#000"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:textSize="20sp"
+        android:id="@+id/edit_profile_dob"
+        android:visibility="visible"/>
+
+    <TextView
+        android:paddingTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textSize="18sp"
+        android:layout_marginStart="5dp"
+
+        android:textColor="#000"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:textSize="20sp"
+        android:id="@+id/edit_profile_gender"
+        android:visibility="visible"/>
+
+    <TextView
+        android:paddingTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bio"
+        android:textSize="18sp"
+        android:layout_marginStart="5dp"
+
+        android:textColor="#000"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:textSize="20sp"
+        android:id="@+id/edit_profile_bio"
+        android:visibility="visible"/>
+
+
+
+
+
+
+
+</LinearLayout>

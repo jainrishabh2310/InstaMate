@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "628116584062",
+    "firebase_url": "https://instamate-fa3ce-default-rtdb.firebaseio.com",
+    "project_id": "instamate-fa3ce",
+    "storage_bucket": "instamate-fa3ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628116584062:android:1baa3c712c23c709b20a2f",
+        "android_client_info": {
+          "package_name": "com.example.instamate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwFBaValVUxO8CjxrhfHlIhN3KwXS0xf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

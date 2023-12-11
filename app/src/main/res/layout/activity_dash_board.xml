@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainlayout"
+    tools:context=".DashBoard">
+
+    <!-- FrameLayout to hold the fragments -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/card"/>
+
+    <!-- BottomNavigationView -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/card"
+        android:background="#fff"
+        app:cardElevation="50dp"
+        android:elevation="40dp"
+        app:cardMaxElevation="30dp"
+        app:cardCornerRadius="3dp"
+        >
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:background="#000"
+        android:focusedByDefault="false"
+        android:touchscreenBlocksFocus="false"
+        android:defaultFocusHighlightEnabled="false"
+        android:outlineSpotShadowColor="#000"
+        android:outlineProvider="paddedBounds"
+        android:elevation="40dp"
+        android:paddingTop="5dp"
+        app:elevation="40dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_behavior="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav" />
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

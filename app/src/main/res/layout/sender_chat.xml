@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:backgroundTint="#8422FF"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="4dp"
+        app:cardCornerRadius="17dp"
+        android:layout_alignParentEnd="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send A message"
+            android:fontFamily="@font/helvetica"
+            android:id="@+id/sender_message"
+            android:textSize="16sp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_margin="5dp"
+            android:textColor="#fff"
+            android:textStyle="normal"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:includeFontPadding="true"
+
+            android:textAppearance="@font/helvetica"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</RelativeLayout>
