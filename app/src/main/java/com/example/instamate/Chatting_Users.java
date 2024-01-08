@@ -23,9 +23,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Chatting_Users extends AppCompatActivity {
 
@@ -136,6 +147,12 @@ public class Chatting_Users extends AppCompatActivity {
                     reference.child(currentuid).child(receiveruid).child(uniqueid).setValue(model);
                     reference.child(receiveruid).child(currentuid).child(uniqueid).setValue(model);
 
+
+                    sendNotification(message,currentuid,receiveruid);
+
+
+
+
                     HashMap<String ,Object> map = new HashMap<>();
                     map.put("lastid",uniqueid);
 
@@ -213,8 +230,129 @@ public class Chatting_Users extends AppCompatActivity {
 
 
     }
+
+    private void sendNotification(String message, String currentuser, String receiveruid) {
+
+        FirebaseDatabase.getInstance().getReference("Users").child(currentuser)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            Profile_DataHolder dataHolder=snapshot.getValue(Profile_DataHolder.class);
+
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(receiveruid).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if(snapshot.exists()){
+
+                                                String token=snapshot.child("FCM_token").getValue(String.class);
+
+
+
+
+
+
+
+                                                try {
+
+
+                                                    JSONObject jsonObject= new JSONObject();
+
+                                                    JSONObject notiificationobj= new JSONObject();
+                                                    notiificationobj.put("title",dataHolder.getUsername());
+                                                    notiificationobj.put("body",message);
+                                                    notiificationobj.put("sound", com.google.firebase.messaging.R.raw.firebase_common_keep); // Set the sound
+                                                    notiificationobj.put("icon",R.drawable.instagram);
+
+
+                                                    JSONObject dataobj= new JSONObject();
+                                                    dataobj.put("Uid",currentuser);
+
+                                                    jsonObject.put("notification",notiificationobj);
+                                                    jsonObject.put("data",dataobj);
+                                                    jsonObject.put("to",token);
+
+
+                                                    // Additional settings for the notification
+                                                    JSONObject androidObj = new JSONObject();
+                                                    androidObj.put("visibility", "public"); // Make the notification visible on the lock screen
+
+                                                    androidObj.put("priority", "max"); // Set notification priority
+                                                    notiificationobj.put("android", androidObj);
+                                                    callApi(jsonObject);
+
+
+                                                }
+                                                catch (Exception e){
+
+                                                }
+
+
+
+
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+
+
+
+
+
+
+
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+
+
+
+    }
+    void callApi(JSONObject jsonobj){
+
+        MediaType JSON = MediaType.get("application/json");
+
+        OkHttpClient client = new OkHttpClient();
+        String url="https://fcm.googleapis.com/fcm/send";
+        RequestBody requestBody= RequestBody.create(jsonobj.toString(),JSON);
+        Request request= new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .header("Authorization","Bearer AAAAkj6qdn4:APA91bHzNgXsK85B6GJAwViNetgJaRCrnA5ApvQ8rVnivPmiu69u3j1yCN_MVbpEdXE5q_0cJ9oHmg4ubein2RoQAZKBK1saXf6vwc7M2V6uJqjzH-7E2FYw8GJzXERBPsiWyNyPXWc0")
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+            }
+        });
+    }
+
+
+
     protected void onStart() {
         super.onStart();
+
         HashMap<String,Object> map= new HashMap<>();
         map.put("Status","online");
         FirebaseDatabase.getInstance().getReference("Users")

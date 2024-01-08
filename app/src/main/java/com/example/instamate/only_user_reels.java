@@ -1,64 +1,105 @@
 package com.example.instamate;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link only_user_reels#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.instamate.Adapters.only_users_reels_grid;
+import com.example.instamate.Models.Reel_Model;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+
 public class only_user_reels extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+RecyclerView reels_recview;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+ArrayList<Reel_Model> reel_list;
 
-    public only_user_reels() {
-        // Required empty public constructor
-    }
+only_users_reels_grid onlyUsersReelsGrid;
+DatabaseReference databaseReference;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment only_user_reels.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static only_user_reels newInstance(String param1, String param2) {
-        only_user_reels fragment = new only_user_reels();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
+    @SuppressLint("MissingInflatedId")
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_only_user_reels, container, false);
+        View view= inflater.inflate(R.layout.fragment_only_user_reels, container, false);
+        reels_recview=view.findViewById(R.id.only_user_reel_recview);
+
+        reel_list= new ArrayList<>();
+
+        GridLayoutManager layoutManager = new GridLayoutManager(requireContext(), 3, RecyclerView.VERTICAL, false);
+        reels_recview.setLayoutManager(layoutManager);
+        String userid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+        onlyUsersReelsGrid= new only_users_reels_grid(getContext(),reel_list,
+
+                new only_users_reels_grid.OnItemClickListener(){
+                    @Override
+                    public void onItemClick(String userId,String reelid, int position){
+                        openFragment(userId,reelid,position);
+
+
+                    }
+
+                });
+
+        reels_recview.setAdapter(onlyUsersReelsGrid);
+        databaseReference.child("Users").child(userid).child("Reels").orderByKey().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    reel_list.clear();
+                    for (DataSnapshot values: snapshot.getChildren()) {
+                        Reel_Model model=values.getValue(Reel_Model.class);
+                        reel_list.add(model);
+
+
+                    }
+                    Collections.reverse(reel_list);
+                    onlyUsersReelsGrid.notifyDataSetChanged();
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+        return view;
     }
+
+    public void openFragment(String userId,String reelid,int position) {
+        only_user_reels_fullview secondFragment = only_user_reels_fullview.newInstance(userId,reelid,position);
+
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, secondFragment)
+                .addToBackStack(null)
+                .commit();
+
+
+    }
+
+
 }
